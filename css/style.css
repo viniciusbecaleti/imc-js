@@ -153,24 +153,53 @@ img {
   cursor: pointer;
 }
 
-.alert-wrapper.active {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
 .alert-wrapper {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
+  width: 100vw;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: 700;
+  line-height: 0;
   color: var(--tc-error);
-  text-align: center;
-  padding: 8rem 0;
   background: var(--bg-error);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-30px);
-  transition: transform 0.3s;
+}
+
+.alert-wrapper.show {
+  animation: up-down .3s forwards;
+}
+
+.alert-wrapper.hide {
+  animation: down-up .3s forwards;
+}
+
+@keyframes up-down {
+  from {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+@keyframes down-up {
+  from {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-40px);
+  }
 }
